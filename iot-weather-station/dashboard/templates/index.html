@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather Dashboard</title>
+  <script>
+    async function fetchData() {
+      const res = await fetch("/api/data");
+      const data = await res.json();
+      document.getElementById("temp").innerText = data.temperature + " °C";
+      document.getElementById("hum").innerText = data.humidity + " %";
+    }
+    setInterval(fetchData, 5000);
+    window.onload = fetchData;
+  </script>
+</head>
+<body>
+  <h1>Live Weather Dashboard</h1>
+  <p>Temperature: <span id="temp">--</span></p>
+  <p>Humidity: <span id="hum">--</span></p>
+</body>
+</html>
